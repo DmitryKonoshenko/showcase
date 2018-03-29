@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+<head>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- Ionic -->
+    <link href="assets/css/open-iconic-bootstrap.css" rel="stylesheet"/>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-grid.css" rel="stylesheet"/>
+    <link href="assets/css/shop-homepage.css" rel="stylesheet"/>
+
+
+    <!-- Bootstrap DataTables -->
+    <link href="assets/css/dataTables.bootstrap.css" rel="stylesheet"/>
+    <link href="assets/css/datatables.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/shop-homepage.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="assets/css/myapp.css" rel="stylesheet"/>
+
+    <title>Витрина</title>
+</head>
+
+<body>
+
+<div class="wrapper">
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="http://192.168.99.100:8081/InternetShop_war/home">Магазин Электроники Электроник</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <c:forEach items="#{servlet.listProduct}" var="product" varStatus="metadata">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="http://192.168.99.100:8081/InternetShop_war/show/#{product.id}/product">
+                        <img class="card-img-top" src="http://192.168.99.100:8081/InternetShop_war/resources/images/#{product.code}.jpg" alt=""/>
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <h:outputText value="#{product.name}"/>
+                        </h4>
+                        <h5><h:outputText value="&#8381; #{product.unitPrice}"/></h5>
+                        <p class="card-text"><h:outputText value="#{product.description}"/></p>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
+
+</body>
+</html>
